@@ -46,10 +46,10 @@ class RandomJoke(object):
 #    if category is None:
     url = 'https://icanhazdadjoke.com/'
     headers = {'Accept': 'application/json'}
-    r = requests.get(url, headers=headers)
-    joke_msg = str(r.json().get('joke'))
-    print(joke_msg)
+    r = requests.get(url, headers=headers).json()
     print(r)
+    joke_msg = str(r.get('joke'))
+    print(joke_msg)
 #    else:
 #      joke_msg = str(requests.get("https://icanhazdadjoke.com/random?category={}".format(category)).json().get("joke"))
 
