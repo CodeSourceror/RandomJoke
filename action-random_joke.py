@@ -37,6 +37,7 @@ class RandomJoke(object):
     #good_category = requests.get("https://api.chucknorris.io/jokes/categories").json();
 
     category = None
+    joke_msg = ''
 #    if intent_message.slots.category:
 #      category = intent_message.slots.category.first().value
 #      # check if the category is valid
@@ -46,9 +47,7 @@ class RandomJoke(object):
 #    if category is None:
     url = 'https://icanhazdadjoke.com/'
     headers = {'Accept': 'text/plain'}
-    r = requests.get(url, headers=headers)
-    print(r)
-    joke_msg = str(r)
+    joke_msg = requests.get(url, headers=headers)
     print(joke_msg)
 #    else:
 #      joke_msg = str(requests.get("https://icanhazdadjoke.com/random?category={}".format(category)).json().get("joke"))
