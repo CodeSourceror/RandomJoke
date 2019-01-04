@@ -35,20 +35,20 @@ class RandomJoke(object):
 
     # action code goes here...
     good_category = requests.get("https://api.chucknorris.io/jokes/categories").json();
-​
+
     category = None
     if intent_message.slots.category:
       category = intent_message.slots.category.first().value
       # check if the category is valid
       if category.encode("utf-8") not in good_category:
         category = None
-​
+
     if category is None:
       joke_msg = str(requests.get("https://icanhazdadjoke.com/").json().get("joke"))
     else:
       joke_msg = str(requests.get("https://icanhazdadjoke.com/").json().get("joke"))
       # joke_msg = str(requests.get("https://icanhazdadjoke.com/random?category={}".format(category)).json().get("joke"))
-​
+
     # if need to speak the execution result by tts
     hermes.publish_start_session_notification(intent_message.site_id, joke_msg, "RandomJoke")
   # --> Master callback function, triggered everytime an intent is recognized
